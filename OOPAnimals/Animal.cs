@@ -14,7 +14,7 @@ public abstract class Animal
         Habitat = habitat;
     }
 
-    //Här gör vi properties av fälten och ger de get/ get set metod(er) 
+    //Properties 
     private string AnimalType { get; }
     private string Colour { get; }
 
@@ -26,25 +26,11 @@ public abstract class Animal
 
     private string Habitat { get; }
 
-    // Metoder som kan nås av alla klasser, som är ett enkla statements. 
-    public void SleepyTime()
-    {
-        Console.WriteLine($"{AnimalType} är trött nu, time to go sleep sleep");
-    }
-
-    public void FoodTime()
-    {
-        Console.WriteLine("Middagstiiiid, yummy in my tummy!");
-    }
-
-    public void BoredAnimal()
-    {
-        Console.WriteLine("Det finns ingenting att göra, now what?");
-    }
-
-
-    /* MakeSound metod, det är en abstrakt metod för att den ska finnas i alla klasser. En abstrakt metod får inte ha en
-     body utan den sätts i de olika djurklasserna när den overrideas i klasserna. */
+    /* Metoder som kan nås av alla klasser, som precis som klassen är abstrakta. detta är för att de ska finnas i alla
+     klasser. Och eftersom de är abstrakta får de inte ha någon body utan de defineras i klasserna när de overrideas */
+    public abstract void SleepyTime();
+    public abstract void FoodTime();
+    public abstract void BoredAnimal();
     public abstract void MakeSound();
 
     /* En metod som skriver ut alla de egenskaper som är gemensamma för alla klasser. Den skriver djurens unika värden,

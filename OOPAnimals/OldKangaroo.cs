@@ -19,7 +19,6 @@ public class OldKangaroo : Kangaroo
 
     private bool TooTiredToJump { get; }
 
-
     /* En enkel metod som jämför det unika fältet i denna klass och skriver ut olika saker beroende på om det är sant
      eller falskt. Om den gamla kängurun är för trött här att hoppa så är den en bitter känguru också, men orkar den
      hoppa så är den glad. Detta är kort och gott ett annat sätt att skriva if else statement på */

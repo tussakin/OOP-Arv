@@ -15,6 +15,21 @@ internal class Tiger : Animal
 
     private string FavouriteCereal { get; }
 
+    public override void FoodTime()
+    {
+        Console.WriteLine("Det är alltid en grrrrreat time för flingor!");
+    }
+
+    public override void BoredAnimal()
+    {
+        Console.WriteLine("Tigern har ingenting att göra och vill gärna gå på äventyr!");
+    }
+
+    public override void SleepyTime()
+    {
+        Console.WriteLine("*gäääsp*, tigern är trött och tänker ta en liten nap.");
+    }
+
     // Unik metod för klassen som frågar användaren efter specifik input, och svarar lämpligt efter input med hjälp av
     // en if-sats och while loop. Om användaren inte get rätt svar så kommer metoden loopas fram tills att ett rätt svar ges
     public void PourCereal()

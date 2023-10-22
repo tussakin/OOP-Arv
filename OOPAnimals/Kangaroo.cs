@@ -18,6 +18,26 @@ public abstract class Kangaroo : Animal
 
     private string WhatIsInPouch { get; }
 
+    public override void MakeSound()
+    {
+        Console.WriteLine("Det finns ingenting att göra, now what?");
+    }
+
+    public override void FoodTime()
+    {
+        Console.WriteLine("Middagstiiiid, yummy in my tummy!");
+    }
+
+    public override void SleepyTime()
+    {
+        Console.WriteLine(" är trött nu, time to go sleep sleep");
+    }
+
+    public override void BoredAnimal()
+    {
+        Console.WriteLine("Jag har trååååkigt.");
+    }
+
 
     // Metod som skriver ut statements, och ber användaren om input för att veta vad som finns inuti fickan på kängurun. 
     public void StuffInPouch()

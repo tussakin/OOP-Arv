@@ -5,19 +5,34 @@ internal class Koala : Animal
 
 // Constructor som tar in alla relevanta värden för denna klassen samt sätter defaults, och som har en base eftersom det är en derived class.
 {
-    private string? _koalaSound;
-
     public Koala(string animalType = "koala", string colour = "grå", string name = "Steve",
-        int age = 4, bool carnivore = false, string habitat = "träd", bool hasChlamydia = true)
+        int age = 4, bool carnivore = false, string habitat = "träd", bool hasChlamydia = true,
+        string koalaSound = "AAAAAAA")
         : base(animalType, colour, name, age, carnivore, habitat)
     {
         HasChlamydia = hasChlamydia;
+        KoalaSound = koalaSound;
     }
 
     // Properties med get; set; och get; metoder. Dessa är för att hämta och sätta värden till properties
     private string? KoalaSound { get; set; }
     private bool HasChlamydia { get; }
 
+    public override void FoodTime()
+    {
+        Console.WriteLine("Klockan är ju middagstid någonstans!");
+    }
+
+    public override void SleepyTime()
+    {
+        Console.WriteLine("Har jag varit vaken i över 20 minuter? Inte konstigt att jag är så trött. Godnatt!");
+    }
+
+    public override void BoredAnimal()
+    {
+        Console.WriteLine(
+            "Samma träd, samma blad ,samma tråkmåns på grenen bredvid. Kan inte jag få följa med dig hem? .");
+    }
 
     // Enkel metod som endast skriver ut ett statement 
     public void FallOutOfTree()
@@ -42,10 +57,10 @@ internal class Koala : Animal
     public override void MakeSound()
     {
         Console.WriteLine("Skriv in hur koalan låter: ");
-        _koalaSound = Console.ReadLine();
+        KoalaSound = Console.ReadLine();
 
-        Console.WriteLine(_koalaSound == ""
+        Console.WriteLine(KoalaSound == ""
             ? "Koalan är ganska tyst idag."
-            : $"{_koalaSound} låter koalan!");
+            : $"{KoalaSound} låter koalan!");
     }
 }

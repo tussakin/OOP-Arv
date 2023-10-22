@@ -24,8 +24,7 @@ internal class BabyKangaroo : Kangaroo
         Console.WriteLine("Zzzzzz.... \nShh, bebisen sover.");
     }
 
-
-    // Metod som skriver ut de unika delarna av klassen. Output varierar beroende på de unika fälten. 
+    // Metod som skriver ut de unika delarna av klassen. Output varierar beroende på de unika fälten. Här med if else
     public void PrintBabyKangaroo()
     {
         string pouch;

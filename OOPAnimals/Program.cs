@@ -15,7 +15,7 @@ internal class Program
             new OldKangaroo(),
 
             new Koala("koala", "tie dye", "Jeff", 13,
-                false, "vart livet än tar mig mannen"),
+                false, "vart livet än tar mig mannen", false, "AAARGH"),
 
 
             new BabyKangaroo("bebiskänguru", "Olivia",
@@ -60,6 +60,7 @@ internal class Program
                         case BabyKangaroo babyKangaroo:
                             babyKangaroo.PrintBabyKangaroo();
                             babyKangaroo.StuffInPouch();
+                            babyKangaroo.NapTime();
                             break;
                         case OldKangaroo oldKangaroo:
                             oldKangaroo.Complain();
