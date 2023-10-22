@@ -1,13 +1,14 @@
 ﻿namespace OOPAnimals;
 
 /* En abstrakt klass som heter Kangaroo, som är en derived class, mao så är det en klass som ärver från parent class.
- Men,det är en abstract clas vilket gör att det inte går att skapa objekt direkt från denna klass, utan för att skapa
+ Men,det är en abstract klass vilket gör att det inte går att skapa objekt direkt från denna klass, utan för att skapa
  ett objekt med denna klassens egenskaper så behöver man gå ner på den derived class under denna. Detta är multilevel
  inheritance. Detta betyder att de klasser som ärver från Kangaroo, i detta program så är det BabyKangaroo och OldKangaroo,
  ärver från både Animal och Kangaroo. Det gör att egenskaperna i denna klass blir unika i det sätt att exakt alla klasser
  inte ärver det, men det blir inte unikt för endast en klass eftersom vi har flera klasser som ärver från denna. */
 public abstract class Kangaroo : Animal
 {
+    // Constructor som tar in alla relevanta värden för denna klassen samt sätter defaults, och som har en base eftersom det är en derived class.
     public Kangaroo(string animalType, string name, string colour, int age,
         bool carnivore, string habitat, string whatIsInPouch)
         : base(animalType, colour, name, age, carnivore, habitat)

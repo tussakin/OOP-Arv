@@ -3,6 +3,9 @@
 // Internal class eftersom det bara behöver nås inom programmet. Defaultvärden sätts, samt deklaration av unikt fält. 
 internal class Tiger : Animal
 {
+    private string? _tigerSound;
+
+// Constructor som tar in alla relevanta värden för denna klassen , och som har en base eftersom det är en derived class.
     public Tiger(string animalType = "Tiger", string colour = "orange", string name = "Tony", int age = 24,
         bool carnivore = true, string habitat = "CerealBoxes", string favouriteCereal = "Kellog's frosted flakes")
         : base(animalType, colour, name, age, carnivore, habitat)
@@ -12,11 +15,13 @@ internal class Tiger : Animal
 
     private string FavouriteCereal { get; }
 
-    // Unik metod för klassen som frågar användaren efter specifik input, och svarar lämpligt efter input. 
+    // Unik metod för klassen som frågar användaren efter specifik input, och svarar lämpligt efter input med hjälp av
+    // en if-sats och while loop. Om användaren inte get rätt svar så kommer metoden loopas fram tills att ett rätt svar ges
     public void PourCereal()
     {
         while (true)
         {
+            Console.WriteLine("Är du hungrig? Skriv 'y' för ja, 'n' för nej:");
             var hungryUser = Console.ReadLine();
 
 
@@ -36,22 +41,20 @@ internal class Tiger : Animal
         }
     }
 
-    /* MakeSound metod som tar in input från användaren och skriver ut passande statements för vad den säger, beroende
-     på om inputen är tom eller inte. */
-    public void MakeSound()
-    {
-        Console.WriteLine("Skriv in hur tigern låter:");
-
-        var tigerSound = Console.ReadLine();
-
-        Console.WriteLine(tigerSound == null
-            ? "Tigern är ganska tyst idag."
-            : $"{tigerSound} låter tigern!");
-    }
-
     // Skriver ut det unika fältet i klassen. 
     public void PrintTiger()
     {
         Console.WriteLine($"Mina favoritflingor är {FavouriteCereal}!");
+    }
+
+    // Här skrivs metoden MakeSound() över för at skapa en unik version för just denna klassen
+    public override void MakeSound()
+    {
+        Console.WriteLine("Skriv in hur tigern låter: ");
+        _tigerSound = Console.ReadLine();
+
+        Console.WriteLine(_tigerSound == ""
+            ? "Tigern är ganska tyst idag."
+            : $"{_tigerSound} låter tigern!");
     }
 }

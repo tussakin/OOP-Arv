@@ -1,8 +1,7 @@
 namespace OOPAnimals;
 
 /* Basklass, eller parent, till alla de andra klasserna. Den är abstract, för att det inte ska skapas bara "djur', utan
- vi vill skapa specifika djur. Vi gör fält som kommer att vara gemensamma för alla djur, så det är saker som tex. namn
- och färg, och inte saker som är specifika för vissa djur. */
+ vi vill skapa specifika djur. Vi gör fält som kommer att vara gemensamma för alla djur. */
 public abstract class Animal
 {
     protected Animal(string animalType, string colour, string name, int age, bool carnivore, string habitat)
@@ -28,20 +27,25 @@ public abstract class Animal
     private string Habitat { get; }
 
     // Metoder som kan nås av alla klasser, som är ett enkla statements. 
-    public static void SleepyTime()
+    public void SleepyTime()
     {
-        Console.WriteLine("Det är natt, time to go sleep sleep");
+        Console.WriteLine($"{AnimalType} är trött nu, time to go sleep sleep");
     }
 
-    public static void FoodTime()
+    public void FoodTime()
     {
-        Console.WriteLine("Middagstid, yummy in my tummy!");
+        Console.WriteLine("Middagstiiiid, yummy in my tummy!");
     }
 
-    public static void BoredAnimal()
+    public void BoredAnimal()
     {
         Console.WriteLine("Det finns ingenting att göra, now what?");
     }
+
+
+    /* MakeSound metod, det är en abstrakt metod för att den ska finnas i alla klasser. En abstrakt metod får inte ha en
+     body utan den sätts i de olika djurklasserna när den overrideas i klasserna. */
+    public abstract void MakeSound();
 
     /* En metod som skriver ut alla de egenskaper som är gemensamma för alla klasser. Den skriver djurens unika värden,
      och den kollar om carnivore är true, och om så är fallet så sätter den stringen foodPreferences till köttätare.
@@ -49,14 +53,12 @@ public abstract class Animal
     public void PrintInfo()
     {
         string foodPreferences;
-
-
         if (Carnivore)
             foodPreferences = "köttätare";
 
         else
             foodPreferences = "vegetarian";
-        Console.Write($"Jag heter {Name} och är en {AnimalType}. Jag är {Colour} och är {Age} år gammal." +
+        Console.Write($"Jag heter {Name} och är en {AnimalType}. Jag är {Colour} och är {Age} år gammal. " +
                       $"Jag bor i {Habitat} och jag är {foodPreferences}. ");
     }
 }

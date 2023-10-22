@@ -3,55 +3,78 @@
 // Theres Sundberg Selin, .NET23
 internal class Program
 {
-    private static void Main(string[] args)
+    private static void Main()
     {
-        /* Här skapar vi objekt av de klasser vi har skapat genom att deklarera objektet, väljer den klass vi vill skapa
-         objektet av och sedan tilldela värden till alla egenskaper som klasserna har. I detta program så har alla klasser
-         ett par gemensamma egenskaper, och sen finns det unika egenskaper för varje klass, eftersom vi har en basklass/parent,
-         och sedan klasser som ärver av den, så kallade derived classes, samt klasser som ärver av derived classes.
-         Alla fält fylls och objekten skapas med dessa.  */
-        var tiger1 = new Tiger("Tiger", "Orangerandig",
-            "Tony", 20, true, "Kanada", "Cocopuffs");
+        /* Här skapar vi objekt av de klasser vi har skapat i en lista. En del av objekten som skapas använder sig
+         av defaultvärden som är satta i klasserna, medans andra sätts här och nu. De är satta i en lista för att vi enkelt
+         ska kunna loopa igenom alla djuren i nästa steg*/
+        var animalList = new List<Animal>
+        {
+            new Tiger("tiger", "lilarandig", "Sam", 3, false, "Kanada", "cocopuffs"),
 
-        var koala1 = new Koala("AAAAA", "Koala", "Grå med vita fläckar",
-            "Jeff", 13, false, "vart livet än tar mig mannen");
+            new OldKangaroo(),
 
-        var babyKangaroo = new BabyKangaroo("Bebiskänguru", "Olivia",
-            "ljusbrun", 2, false, "Sjumilaskogen", "små saker");
+            new Koala("koala", "tie dye", "Jeff", 13,
+                false, "vart livet än tar mig mannen"),
 
-        var oldKangaroo = new OldKangaroo("Gammal känguru", "kang", "Gråbrun",
-            58, false, "Spanien", "Alldeles för mycket saker");
 
-        /* Här kallas alla metoder i klasserna och körs. De kallas på olika sätt beroende på ifall metoderna är static
-         eller ej. Vid static metoder så kallas metoderna med klassens namn, men vid eh static så kallas den med
-         objektets namn. */
-        tiger1.PrintInfo();
-        tiger1.PrintTiger();
-        Console.WriteLine("Är du hungrig? Skriv 'y' för ja, 'n' för nej:");
-        tiger1.PourCereal();
-        tiger1.MakeSound();
-        Animal.FoodTime();
-        Animal.SleepyTime();
-        Console.WriteLine();
-        koala1.PrintInfo();
-        koala1.PrintKoala();
-        koala1.MakeSound();
-        Koala.FallOutOfTree();
-        Animal.BoredAnimal();
-        Console.WriteLine();
-        babyKangaroo.PrintInfo();
-        babyKangaroo.PrintKangaroo();
-        babyKangaroo.PrintBabyKangaroo();
-        babyKangaroo.StuffInPouch();
-        babyKangaroo.MakeSound();
-        Animal.SleepyTime();
-        BabyKangaroo.NapTime();
-        Console.WriteLine();
-        oldKangaroo.PrintInfo();
-        oldKangaroo.PrintKangaroo();
-        oldKangaroo.PrintOldKangaroo();
-        oldKangaroo.Complain();
-        oldKangaroo.MakeSound();
-        Animal.BoredAnimal();
+            new BabyKangaroo("bebiskänguru", "Olivia",
+                "ljusbrun", 2, false, "hos morsan", "kokostoppar", false),
+
+            new Koala(),
+
+            new OldKangaroo("gammal känguru", "Kang", "gråbrun",
+                58, false, "Spanien", "kissekatter", false),
+
+            new Tiger(),
+
+            new BabyKangaroo()
+        };
+
+        /* I detta steg så loopar vi igenom alla djur i hela animalList genom en foreach.  Vi tar ett djur i taget, börjar
+         med att kalla på metoderna som finns i basklassen. Sedan kontrollerar vi djuret och ser vilken subklass den
+         tillhör med en switch-case. När programmet hittar ett matchande djur så kallar den på de unika metoderna som
+         finns i varje djurklass. I några av fallen, när djuren råkar vara kängurusar, så går den igenom den första
+         switchen och hittar kangaroo, kallar på metoderna som ligger under den klassen, och sen går den in i den inre
+         switch caset för att kalla på de unika metoderna som finns i baby och old kangaroo. Efter att de unika metoderna
+         körts så går den ut ur switch caset, går igenom resten av de gemensamma metoderna i animal klassen. När djuret
+        är klart så går den vidare till nästa djur och gör samma process tills listan är genomloopad. */
+        foreach (var animal in animalList)
+        {
+            animal.PrintInfo();
+
+            switch (animal)
+            {
+                case Tiger tiger:
+                    tiger.PrintTiger();
+                    tiger.PourCereal();
+                    break;
+                case Koala koala:
+                    koala.PrintKoala();
+                    koala.FallOutOfTree();
+                    break;
+                case Kangaroo kangaroo:
+                    kangaroo.PrintKangaroo();
+                    switch (kangaroo)
+                    {
+                        case BabyKangaroo babyKangaroo:
+                            babyKangaroo.PrintBabyKangaroo();
+                            babyKangaroo.StuffInPouch();
+                            break;
+                        case OldKangaroo oldKangaroo:
+                            oldKangaroo.Complain();
+                            oldKangaroo.StuffInPouch();
+                            break;
+                    }
+
+                    break;
+            }
+
+            animal.BoredAnimal();
+            animal.MakeSound();
+            animal.FoodTime();
+            animal.SleepyTime();
+            Console.WriteLine();
+        }
     }
 }
